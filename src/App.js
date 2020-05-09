@@ -53,7 +53,16 @@ export default class App extends Component {
               />
             )}
           />
-          <Route path="/dashboard" exact component={DashboardPage} />
+          <Route
+            path="/dashboard"
+            exact
+            render={(props) => (
+              <DashboardPage
+                {...props}
+                loggedInStatus={this.state.loggedInStatus}
+              />
+            )}
+          />
           <Route path="/tasks" exact component={TasksPage} />
           <Route path="/sports" exact component={SportsPage} />
           <Route path="/news" exact component={NewsPage} />

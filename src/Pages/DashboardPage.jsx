@@ -14,6 +14,7 @@ export default class DashboardPage extends Component {
   render() {
     return (
       <>
+        {this.props.loggedInStatus}
         Good Day Swapnil
         <WeatherPreview />
         <NewsPreview />

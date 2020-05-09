@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import container from "../../assets/Container.png";
+import container from "../assets/Container.png";
 
 export default class WeatherPreview extends Component {
   constructor(props) {

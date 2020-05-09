@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import container from "../../assets/Container.png";
+import container from "../assets/Container.png";
 
 export default class SportsPreview extends Component {
   constructor(props) {

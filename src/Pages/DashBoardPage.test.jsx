@@ -8,22 +8,22 @@ import DashboardPage from "./DashboardPage";
 //   return WeatherPreview;
 // });
 
-jest.mock("./Components/WeatherPreview", () => () => (
+jest.mock("../Components/WeatherPreview", () => () => (
   <div data-testid="weatherpreview">Cloudy</div>
 ));
-jest.mock("./Components/NewsPreview", () => () => (
+jest.mock("../Components/NewsPreview", () => () => (
   <div data-testid="newspreview">Headline</div>
 ));
-jest.mock("./Components/SportsPreview", () => () => (
+jest.mock("../Components/SportsPreview", () => () => (
   <div data-testid="sportspreview">Sports</div>
 ));
-jest.mock("./Components/PhotoPreview", () => () => (
+jest.mock("../Components/PhotoPreview", () => () => (
   <div data-testid="photopreview">Photos</div>
 ));
-jest.mock("./Components/TasksPreview", () => () => (
+jest.mock("../Components/TasksPreview", () => () => (
   <div data-testid="taskspreview">Tasks</div>
 ));
-jest.mock("./Components/SportsPreview", () => () => (
+jest.mock("../Components/SportsPreview", () => () => (
     <div data-testid="sportspreview">Sports</div>
   ));
 

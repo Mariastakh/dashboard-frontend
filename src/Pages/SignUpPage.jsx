@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { signInService } from "../Services/signInService";
 
 export default class SignUpPage extends Component {
   constructor(props) {
@@ -32,10 +33,10 @@ export default class SignUpPage extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     console.log(event.target.username.value);
-    //alert(`${this.state.username} ${this.state.password}`);
     if (this.state.confirmedPassword !== this.state.password) {
       alert("Passwords don't match");
     } else {
+      signInService("maria", "123", "me@maria");
       this.props.history.push("/dashboard");
     }
   };
@@ -87,7 +88,7 @@ export default class SignUpPage extends Component {
             <input
               data-testid="emailinput"
               name="email"
-              type="text"
+              type="email"
               value={email}
               onChange={this.handleEmailChange}
               required

@@ -31,6 +31,7 @@ export default class LoginPage extends Component {
     return (
       <>
         <p>Hackathon</p>
+        <p>{this.props.loggedInStatus}</p>
         <form onSubmit={this.handleSubmit}>
           <div data-testid="username">
             <label>Username</label>

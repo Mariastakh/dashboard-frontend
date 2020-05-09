@@ -3,28 +3,61 @@ import React, { Component } from "react";
 export default class LoginPage extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      username: "",
+      password: "",
+    };
   }
 
+  handleUsernameChange = (event) => {
+    console.log(event.target.value);
+    this.setState({ username: event.target.value });
+  };
+
+  handlePasswordChange = (event) => {
+    this.setState({ password: event.target.value });
+  };
+
+  handleSubmit = (event) => {
+    console.log(event.target.username.value);
+    //alert(`${this.state.username} ${this.state.password}`);
+    this.props.history.push("/dashboard");
+    event.preventDefault();
+  };
+
   render() {
+    const { username, password } = this.state;
     return (
       <>
         <p>Hackathon</p>
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <div data-testid="username">
-            <label for="name">Username</label>
-            <input id="name" name="username" type="text" required />
+            <label>Username</label>
+            <input
+              data-testid="usernameinput"
+              name="username"
+              type="text"
+              value={username}
+              onChange={this.handleUsernameChange}
+            />
           </div>
 
           <div data-testid="password">
-            <label for="pwd">Password</label>
-            <input id="pwd" name="password" type="text" required />
+            <label>Password</label>
+            <input
+              data-testid="passwordinput"
+              name="password"
+              type="password"
+              value={password}
+              onChange={this.handlePasswordChange}
+            />
           </div>
-          <input
-            type="button"
-            className="button"
-            value="Submit"
-            data-testid="submit"
-          />
+          <div data-testid="submit">
+            <button type="submit" className="button">
+              Submit
+            </button>
+          </div>
         </form>
 
         <p>New to Hackathon? Sign Up</p>

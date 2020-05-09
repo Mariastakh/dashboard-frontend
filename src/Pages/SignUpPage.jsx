@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 
-export default class LoginPage extends Component {
+export default class SignUpPage extends Component {
   constructor(props) {
     super(props);
   }
 
   render() {
-    return <>log in page</>;
+    return <>sign up page</>;
   }
 }

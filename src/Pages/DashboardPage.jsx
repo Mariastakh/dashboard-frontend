@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 
-export default class LoginPage extends Component {
+export default class DashboardPage extends Component {
   constructor(props) {
     super(props);
   }
 
   render() {
-    return <>log in page</>;
+    return <>dashboard page</>;
   }
 }

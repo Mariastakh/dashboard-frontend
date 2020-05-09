@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import container from "../../assets/Container.png";
 
 export default class NewsPreview extends Component {
@@ -12,9 +11,9 @@ export default class NewsPreview extends Component {
       <>
         <div data-testid="newspreview">
           The news
-          <Link to="/news">
+          <a href="/news">
             <img src={container} alt="the latest news headline" />
-          </Link>
+          </a>
         </div>
       </>
     );

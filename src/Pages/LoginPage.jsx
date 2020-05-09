@@ -40,6 +40,7 @@ export default class LoginPage extends Component {
               type="text"
               value={username}
               onChange={this.handleUsernameChange}
+              required
             />
           </div>
 
@@ -51,6 +52,7 @@ export default class LoginPage extends Component {
               type="password"
               value={password}
               onChange={this.handlePasswordChange}
+              required
             />
           </div>
           <div data-testid="submit">
@@ -60,7 +62,7 @@ export default class LoginPage extends Component {
           </div>
         </form>
 
-        <p>New to Hackathon? Sign Up</p>
+        <p>New to Hackathon? <a href="/signup">Sign up</a> </p>
       </>
     );
   }

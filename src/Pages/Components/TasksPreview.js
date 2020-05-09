@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import container from "../../assets/Container.png";
 
 export default class TasksPreview extends Component {
@@ -12,9 +11,9 @@ export default class TasksPreview extends Component {
       <>
         <div data-testid="taskspreview">
           Tasks
-          <Link to="/tasks">
+          <a href="/tasks">
             <img src={container} alt="tasks preview" />
-          </Link>
+          </a>
         </div>
       </>
     );

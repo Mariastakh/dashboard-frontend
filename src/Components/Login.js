@@ -13,7 +13,6 @@ export default class Login extends Component {
   }
 
   handleUsernameChange = (event) => {
-    console.log(event.target.value);
     this.setState({ username: event.target.value });
   };
 
@@ -23,7 +22,6 @@ export default class Login extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    console.log(event.target.username.value);
     axios
       .post(
         "http://localhost:8000/",
@@ -35,6 +33,7 @@ export default class Login extends Component {
       )
       .then((response) => {
         if (response.data === "OK") {
+          console.log(response);
           this.props.handleSuccessfulAuth(response);
         } else {
           this.setState({ registrationError: "Oops, log-in unsuccessful" });

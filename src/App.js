@@ -38,6 +38,7 @@ export default class App extends Component {
             render={(props) => (
               <LoginPage
                 {...props}
+                handleLogin={this.handleLogin}
                 loggedInStatus={this.state.loggedInStatus}
               />
             )}
@@ -48,7 +49,6 @@ export default class App extends Component {
             render={(props) => (
               <SignUpPage
                 {...props}
-                handleLogin={this.handleLogin}
                 loggedInStatus={this.state.loggedInStatus}
               />
             )}

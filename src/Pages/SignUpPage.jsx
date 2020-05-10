@@ -11,8 +11,8 @@ export default class SignUpPage extends Component {
   }
 
   handleSuccessfulAuth(data) {
-    this.props.handleLogin();
-    this.props.history.push("/dashboard");
+   // this.props.handleLogin();
+    this.props.history.push("/");
   }
 
   render() {

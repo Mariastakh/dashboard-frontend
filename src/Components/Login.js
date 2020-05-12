@@ -20,11 +20,13 @@ export default class Login extends Component {
     this.setState({ password: event.target.value });
   };
 
+  //"https://em7jsvk2ig.execute-api.eu-west-2.amazonaws.com/production/"
+
   handleSubmit = (event) => {
     event.preventDefault();
     axios
       .post(
-        "http://localhost:8000/",
+        "https://em7jsvk2ig.execute-api.eu-west-2.amazonaws.com/production/",
         {
           username: this.state.username,
           password: this.state.password,
@@ -32,7 +34,7 @@ export default class Login extends Component {
         { withCredentials: true }
       )
       .then((response) => {
-        if (response.data === "OK") {
+        if (response.status === 200) {
           console.log(response);
           this.props.handleSuccessfulAuth(response);
         } else {

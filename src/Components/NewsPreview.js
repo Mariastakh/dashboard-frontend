@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import styles from "./Preview.module.css";
 import container from "../assets/Container.png";
 
 export default class NewsPreview extends Component {
@@ -8,14 +9,18 @@ export default class NewsPreview extends Component {
 
   render() {
     return (
-      <>
+      <div className={styles.preview}>
         <div data-testid="newspreview">
-          The news
+          {/* The news */}
           <a href="/news">
-            <img src={container} alt="the latest news headline" />
+            <img
+              className={styles.img}
+              src={container}
+              alt="the latest news headline"
+            />
           </a>
         </div>
-      </>
+      </div>
     );
   }
 }

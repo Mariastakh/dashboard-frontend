@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+
+import { Container, Row, Col } from "react-bootstrap";
 import WeatherPreview from "../Components/WeatherPreview";
 import NewsPreview from "../Components/NewsPreview";
 import SportsPreview from "../Components/SportsPreview";
@@ -13,16 +15,32 @@ export default class DashboardPage extends Component {
 
   render() {
     return (
-      <>
+      <Container>
         {this.props.loggedInStatus}
         Good Day Swapnil
-        <WeatherPreview />
-        <NewsPreview />
-        <SportsPreview />
-        <PhotoPreview />
-        <TasksPreview />
-        <ClothesPreview />
-      </>
+        <Row>
+          <Col xs={12} md={4}>
+            <WeatherPreview />
+          </Col>
+          <Col xs={12} md={4}>
+            <NewsPreview />
+          </Col>
+          <Col xs={12} md={4}>
+            <SportsPreview />
+          </Col>
+        </Row>
+        <Row>
+          <Col xs={12} md={4}>
+            <PhotoPreview />
+          </Col>
+          <Col xs={12} md={4}>
+            <TasksPreview />
+          </Col>
+          <Col xs={12} md={4}>
+            <ClothesPreview />
+          </Col>
+        </Row>
+      </Container>
     );
   }
 }

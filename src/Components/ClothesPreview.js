@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import styles from "./Preview.module.css";
 import container from "../assets/Container.png";
 
 export default class ClothesPreview extends Component {
@@ -9,9 +10,9 @@ export default class ClothesPreview extends Component {
   render() {
     return (
       <>
-        <div data-testid="clothespreview">
-          Clothes
-          <img src={container} alt="clothes pie chart" />
+        <div className={styles.preview} data-testid="clothespreview">
+          {/* Clothes */}
+          <img className={styles.img} src={container} alt="clothes pie chart" />
         </div>
       </>
     );

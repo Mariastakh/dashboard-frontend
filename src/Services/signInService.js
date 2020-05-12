@@ -23,7 +23,6 @@ export default class SignInService extends Component {
   }
 
   handleUsernameChange = (event) => {
-    console.log(event.target.value);
     this.setState({ username: event.target.value });
   };
 
@@ -39,15 +38,17 @@ export default class SignInService extends Component {
     this.setState({ email: event.target.value });
   };
 
+  //"https://em7jsvk2ig.execute-api.eu-west-2.amazonaws.com/production/signup"
+
   handleSubmit = (event) => {
     event.preventDefault();
-    console.log(event.target.username.value);
+
     if (this.state.confirmedPassword !== this.state.password) {
       alert("Passwords don't match");
     } else {
       axios
         .post(
-          "http://localhost:8000/signup",
+          "https://em7jsvk2ig.execute-api.eu-west-2.amazonaws.com/production/signup",
           {
             username: this.state.username,
             password: this.state.password,
@@ -56,7 +57,7 @@ export default class SignInService extends Component {
           { withCredentials: true }
         )
         .then((response) => {
-          console.log(response.data);
+          console.log(response);
           if (response.data === "Created") {
             this.props.handleSuccessfulAuth(response);
           } else {

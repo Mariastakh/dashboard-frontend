@@ -6,7 +6,10 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.19.2",
+    "bootstrap": "^4.4.1",
+    "node-sass": "^4.14.1",
     "react": "^16.13.1",
+    "react-bootstrap": "^1.0.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1"
@@ -16,7 +19,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "stop": "taskkill -F -IM node.exe"
+    "stop": "taskkill -F -IM node.exe",
+    "deploy": "aws s3 sync build/ s3://dashboard-application-ui --acl public-read"
   },
   "eslintConfig": {
     "extends": "react-app"

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import axios from "axios";
 import "./App.css";
 import "./global.css";
 import LoginPage from "./Pages/LoginPage";
@@ -22,12 +23,24 @@ export default class App extends Component {
     this.handleLogin = this.handleLogin.bind(this);
   }
 
+  checkLoginStatus() {
+    axios
+      .get("http://localhost:8000/status", { withCredentials: true })
+      .then((response) => {
+        console.log(response);
+      });
+  }
+
   handleLogin(data) {
     console.log("the data", data.user.username);
     this.setState({
       loggedInStatus: "LOGGED_IN",
-      user: data.username,
+      user: data.user.username,
     });
+  }
+
+  componentDidMount() {
+    this.checkLoginStatus();
   }
 
   render() {
@@ -62,6 +75,7 @@ export default class App extends Component {
               <DashboardPage
                 {...props}
                 loggedInStatus={this.state.loggedInStatus}
+                user={this.state.user}
               />
             )}
           />

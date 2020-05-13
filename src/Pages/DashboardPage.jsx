@@ -25,7 +25,8 @@ export default class DashboardPage extends Component {
     return (
       <Container>
         {this.props.loggedInStatus}
-        Good Day Swapnil
+        <br></br>
+        Good Day {this.props.user}
         <Row>
           <Col xs={12} md={4}>
             <WeatherPreview />

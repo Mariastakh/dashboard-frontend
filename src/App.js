@@ -16,15 +16,17 @@ export default class App extends Component {
 
     this.state = {
       loggedInStatus: "logged out",
-      user: {},
+      user: null,
     };
 
     this.handleLogin = this.handleLogin.bind(this);
   }
 
-  handleLogin() {
+  handleLogin(data) {
+    console.log("the data", data.user.username);
     this.setState({
       loggedInStatus: "LOGGED_IN",
+      user: data.username,
     });
   }
 

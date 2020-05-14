@@ -19,6 +19,11 @@ export default class DashboardPage extends Component {
         temperature: 12.36,
         description: "clear sky",
       },
+      news: {
+        title: "",
+        link: "",
+        content: "",
+      },
     };
   }
 
@@ -43,7 +48,22 @@ export default class DashboardPage extends Component {
         // handle success
 
         this.setState({ weather: response.data.weather });
-        console.log(this.state.weather);
+        //console.log(this.state.weather);
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      })
+      .then(function () {
+        // always executed
+      });
+
+    axios
+      .get("http://localhost:8000/news")
+      .then((response) => {
+        // handle success
+
+        this.setState({ news: response.data.news });
       })
       .catch(function (error) {
         // handle error
@@ -69,7 +89,11 @@ export default class DashboardPage extends Component {
             />
           </Col>
           <Col xs={12} md={4}>
-            <NewsPreview />
+            <NewsPreview
+              title={this.state.news.title}
+              link={this.state.news.link}
+              content={this.state.news.content}
+            />
           </Col>
           <Col xs={12} md={4}>
             <SportsPreview />

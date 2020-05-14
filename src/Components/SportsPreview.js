@@ -11,7 +11,8 @@ export default class SportsPreview extends Component {
     return (
       <>
         <div className={styles.preview} data-testid="sportspreview">
-          {/* Sports */}
+          Sport<br></br>
+          {this.props.team}
           <a href="/sports">
             <img className={styles.img} src={container} alt="a sports update" />
           </a>

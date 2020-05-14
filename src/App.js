@@ -17,15 +17,23 @@ export default class App extends Component {
     this.state = {
       loggedInStatus: "logged out",
       user: {},
+      team: localStorage.getItem('teamdata') || "no team set",
     };
 
     this.handleLogin = this.handleLogin.bind(this);
+    this.handleTeam = this.handleTeam.bind(this);
   }
 
   handleLogin() {
     this.setState({
       loggedInStatus: "LOGGED_IN",
     });
+  }
+
+  handleTeam(data) {
+    console.log("team handled");
+    console.log(data);
+    localStorage.setItem('teamdata', data);
   }
 
   render() {
@@ -60,11 +68,18 @@ export default class App extends Component {
               <DashboardPage
                 {...props}
                 loggedInStatus={this.state.loggedInStatus}
+                team={this.state.team}
               />
             )}
           />
           <Route path="/tasks" exact component={TasksPage} />
-          <Route path="/sports" exact component={SportsPage} />
+          <Route
+            path="/sports"
+            exact
+            render={(props) => (
+              <SportsPage {...props} handleTeam={this.handleTeam} />
+            )}
+          />
           <Route path="/news" exact component={NewsPage} />
           <Route path="/photos" exact component={PhotoPage} />
         </Router>

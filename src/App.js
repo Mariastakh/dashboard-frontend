@@ -17,7 +17,7 @@ export default class App extends Component {
     this.state = {
       loggedInStatus: "logged out",
       user: {},
-      team: localStorage.getItem('teamdata') || "no team set",
+      team: localStorage.getItem('teamdata') || "Choose a team",
     };
 
     this.handleLogin = this.handleLogin.bind(this);

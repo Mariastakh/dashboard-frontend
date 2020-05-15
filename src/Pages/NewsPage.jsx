@@ -15,6 +15,12 @@ export default class NewsPage extends Component {
   }
 
   componentDidMount() {
+    const jwt = localStorage.getItem("jwt");
+    console.log(jwt);
+    if (!jwt) {
+      this.props.history.push("/");
+    }
+
     axios
       .get("http://localhost:8000/news")
       .then((response) => {

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import axios from "axios";
 import "./App.css";
 import "./global.css";
 import LoginPage from "./Pages/LoginPage";
@@ -15,17 +16,17 @@ export default class App extends Component {
     super(props);
 
     this.state = {
-      loggedInStatus: "logged out",
-      user: {},
+    
+      user: localStorage.getItem("user") || "No user",
     };
 
     this.handleLogin = this.handleLogin.bind(this);
   }
 
-  handleLogin() {
-    this.setState({
-      loggedInStatus: "LOGGED_IN",
-    });
+  handleLogin(data) {
+  
+    localStorage.setItem("user", data.user.username);
+    console.log(this.state.user);
   }
 
   render() {
@@ -39,28 +40,20 @@ export default class App extends Component {
               <LoginPage
                 {...props}
                 handleLogin={this.handleLogin}
-                loggedInStatus={this.state.loggedInStatus}
+               
               />
             )}
           />
           <Route
             exact
             path="/signup"
-            render={(props) => (
-              <SignUpPage
-                {...props}
-                loggedInStatus={this.state.loggedInStatus}
-              />
-            )}
+            render={(props) => <SignUpPage {...props} />}
           />
           <Route
             path="/dashboard"
             exact
             render={(props) => (
-              <DashboardPage
-                {...props}
-                loggedInStatus={this.state.loggedInStatus}
-              />
+              <DashboardPage {...props} user={this.state.user} />
             )}
           />
           <Route path="/tasks" exact component={TasksPage} />

@@ -102,7 +102,7 @@ export default class DashboardPage extends Component {
             />
           </Col>
           <Col xs={12} md={4}>
-            <SportsPreview />
+            <SportsPreview team={this.props.team} />
           </Col>
         </Row>
         <Row>

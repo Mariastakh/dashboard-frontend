@@ -16,17 +16,24 @@ export default class App extends Component {
     super(props);
 
     this.state = {
-    
+      team: localStorage.getItem('teamdata') || "Choose a team",
       user: localStorage.getItem("user") || "No user",
     };
 
     this.handleLogin = this.handleLogin.bind(this);
+    this.handleTeam = this.handleTeam.bind(this);
   }
 
   handleLogin(data) {
   
     localStorage.setItem("user", data.user.username);
     console.log(this.state.user);
+  }
+
+  handleTeam(data) {
+    console.log("team handled");
+    console.log(data);
+    localStorage.setItem('teamdata', data);
   }
 
   render() {
@@ -53,11 +60,22 @@ export default class App extends Component {
             path="/dashboard"
             exact
             render={(props) => (
-              <DashboardPage {...props} user={this.state.user} />
+              <DashboardPage
+                {...props}
+                loggedInStatus={this.state.loggedInStatus}
+                team={this.state.team}
+                user={this.state.user}
+              />
             )}
           />
           <Route path="/tasks" exact component={TasksPage} />
-          <Route path="/sports" exact component={SportsPage} />
+          <Route
+            path="/sports"
+            exact
+            render={(props) => (
+              <SportsPage {...props} handleTeam={this.handleTeam} />
+            )}
+          />
           <Route path="/news" exact component={NewsPage} />
           <Route path="/photos" exact component={PhotoPage} />
         </Router>

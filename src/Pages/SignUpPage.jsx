@@ -11,7 +11,7 @@ export default class SignUpPage extends Component {
   }
 
   handleSuccessfulAuth(data) {
-   // this.props.handleLogin();
+    // this.props.handleLogin();
     this.props.history.push("/");
   }
 
@@ -19,7 +19,7 @@ export default class SignUpPage extends Component {
     return (
       <>
         <p>Hackathon</p>
-        <p>{this.props.loggedInStatus}</p>
+
         <SignInService handleSuccessfulAuth={this.handleSuccessfulAuth} />
       </>
     );

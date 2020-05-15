@@ -28,58 +28,64 @@ export default class DashboardPage extends Component {
   }
 
   async componentDidMount() {
-    function getPosition() {
-      // Simple wrapper
-      return new Promise((res, rej) => {
-        navigator.geolocation.getCurrentPosition(res, rej);
-      });
+    const jwt = localStorage.getItem("jwt");
+    console.log(jwt);
+    if (!jwt) {
+      this.props.history.push("/");
+    } else {
+      function getPosition() {
+        // Simple wrapper
+        return new Promise((res, rej) => {
+          navigator.geolocation.getCurrentPosition(res, rej);
+        });
+      }
+
+      const locationCoordinates = await getPosition();
+
+      axios
+        .post("http://localhost:8000/weather", {
+          location: {
+            lat: locationCoordinates.coords.latitude,
+            lon: locationCoordinates.coords.longitude,
+          },
+        })
+        .then((response) => {
+          // handle success
+
+          this.setState({ weather: response.data.weather });
+          //console.log(this.state.weather);
+        })
+        .catch(function (error) {
+          // handle error
+          console.log(error);
+        })
+        .then(function () {
+          // always executed
+        });
+
+      axios
+        .get("http://localhost:8000/news")
+        .then((response) => {
+          // handle success
+
+          this.setState({ news: response.data.news });
+        })
+        .catch(function (error) {
+          // handle error
+          console.log(error);
+        })
+        .then(function () {
+          // always executed
+        });
     }
-
-    const locationCoordinates = await getPosition();
-
-    axios
-      .post("http://localhost:8000/weather", {
-        location: {
-          lat: locationCoordinates.coords.latitude,
-          lon: locationCoordinates.coords.longitude,
-        },
-      })
-      .then((response) => {
-        // handle success
-
-        this.setState({ weather: response.data.weather });
-        //console.log(this.state.weather);
-      })
-      .catch(function (error) {
-        // handle error
-        console.log(error);
-      })
-      .then(function () {
-        // always executed
-      });
-
-    axios
-      .get("http://localhost:8000/news")
-      .then((response) => {
-        // handle success
-
-        this.setState({ news: response.data.news });
-      })
-      .catch(function (error) {
-        // handle error
-        console.log(error);
-      })
-      .then(function () {
-        // always executed
-      });
   }
 
   render() {
     return (
       <Container>
-        {this.props.loggedInStatus}
-        {this.state.weather.temp}
-        Good Day Swapnil
+       
+        <br></br>
+        Good Day {this.props.user}
         <Row>
           <Col xs={12} md={4}>
             <WeatherPreview

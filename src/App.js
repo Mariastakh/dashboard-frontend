@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import axios from "axios";
 import "./App.css";
 import "./global.css";
 import LoginPage from "./Pages/LoginPage";
@@ -16,16 +17,31 @@ export default class App extends Component {
 
     this.state = {
       loggedInStatus: "logged out",
-      user: {},
+      user: localStorage.getItem("user") || "No user",
     };
 
     this.handleLogin = this.handleLogin.bind(this);
   }
 
-  handleLogin() {
+  checkLoginStatus() {
+    axios
+      .get("http://localhost:8000/status", { withCredentials: true })
+      .then((response) => {
+        console.log("status check: ", response);
+      });
+  }
+
+  handleLogin(data) {
+    console.log("the data", data.user.username);
     this.setState({
       loggedInStatus: "LOGGED_IN",
     });
+    localStorage.setItem("user", data.user.username);
+    console.log(this.state.user);
+  }
+
+  componentDidMount() {
+    //this.checkLoginStatus();
   }
 
   render() {
@@ -60,6 +76,7 @@ export default class App extends Component {
               <DashboardPage
                 {...props}
                 loggedInStatus={this.state.loggedInStatus}
+                user={this.state.user}
               />
             )}
           />

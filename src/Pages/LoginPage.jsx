@@ -14,7 +14,7 @@ export default class LoginPage extends Component {
   }
 
   handleSuccessfulAuth(data) {
-    this.props.handleLogin();
+    this.props.handleLogin(data);
     this.props.history.push("/dashboard");
   }
 

@@ -74,12 +74,20 @@ export default class DashboardPage extends Component {
       });
   }
 
+  componentDidMount() {
+    const jwt = localStorage.getItem("jwt");
+    console.log(jwt);
+    if (!jwt) {
+      this.props.history.push("/");
+    }
+  }
+
   render() {
     return (
       <Container>
         {this.props.loggedInStatus}
-        {this.state.weather.temp}
-        Good Day Swapnil
+        <br></br>
+        Good Day {this.props.user}
         <Row>
           <Col xs={12} md={4}>
             <WeatherPreview

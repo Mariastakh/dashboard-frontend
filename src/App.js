@@ -17,7 +17,7 @@ export default class App extends Component {
 
     this.state = {
       loggedInStatus: "logged out",
-      user: null,
+      user: localStorage.getItem("user") || "No user",
     };
 
     this.handleLogin = this.handleLogin.bind(this);
@@ -27,7 +27,7 @@ export default class App extends Component {
     axios
       .get("http://localhost:8000/status", { withCredentials: true })
       .then((response) => {
-        console.log(response);
+        console.log("status check: ", response);
       });
   }
 
@@ -35,12 +35,13 @@ export default class App extends Component {
     console.log("the data", data.user.username);
     this.setState({
       loggedInStatus: "LOGGED_IN",
-      user: data.user.username,
     });
+    localStorage.setItem("user", data.user.username);
+    console.log(this.state.user);
   }
 
   componentDidMount() {
-    this.checkLoginStatus();
+    //this.checkLoginStatus();
   }
 
   render() {

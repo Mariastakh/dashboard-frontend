@@ -57,10 +57,9 @@ export default class SignInService extends Component {
         fileType: fileType,
       })
       .then((response) => {
-        var returnData = response.data.data.returnData;
-        var signedRequest = returnData.signedRequest;
-        var url = returnData.url;
-        this.setState({ url: url });
+        const returnData = response.data.data.returnData;
+        const signedRequest = returnData.signedRequest;
+        const url = returnData.url;
         console.log("Recieved a signed request " + signedRequest);
 
         // Put the fileType in the headers for the upload
@@ -73,7 +72,6 @@ export default class SignInService extends Component {
           .put(signedRequest, file, options)
           .then((result) => {
             console.log("Response from s3", result);
-            this.setState({ success: true });
           })
           .catch((error) => {
             alert("ERROR " + JSON.stringify(error));
@@ -82,10 +80,6 @@ export default class SignInService extends Component {
       .catch((error) => {
         alert(JSON.stringify(error));
       });
-    //const fd = new FormData();
-    //fd.append('image', this.state.image, this.state.image.name);
-    // axios.post to bucket
-    // axios post to api - save image name  to db
   };
 
   //"https://em7jsvk2ig.execute-api.eu-west-2.amazonaws.com/production/signup"

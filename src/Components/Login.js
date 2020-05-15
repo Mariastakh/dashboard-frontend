@@ -26,7 +26,7 @@ export default class Login extends Component {
     event.preventDefault();
     axios
       .post(
-        "https://em7jsvk2ig.execute-api.eu-west-2.amazonaws.com/production/",
+        "http://localhost:8000/",
         {
           username: this.state.username,
           password: this.state.password,
@@ -36,7 +36,8 @@ export default class Login extends Component {
       .then((response) => {
         if (response.status === 200) {
           console.log(response);
-          this.props.handleSuccessfulAuth(response);
+          localStorage.setItem("jwt", response.data.token);
+          this.props.handleSuccessfulAuth(response.data);
         } else {
           this.setState({ registrationError: "Oops, log-in unsuccessful" });
         }

@@ -66,24 +66,31 @@ export default class DashboardPage extends Component {
       axios
         .get("http://localhost:8000/news")
         .then((response) => {
-          // handle success
-
           this.setState({ news: response.data.news });
         })
         .catch(function (error) {
-          // handle error
           console.log(error);
         })
-        .then(function () {
-          // always executed
-        });
+        .then(function () {});
+
+      axios
+        .get("http://localhost:8000/photos", {
+          headers: { Authorization: `Bearer ${jwt}` },
+        })
+        .then((response) => {
+          console.log(response);
+          //this.setState({ news: response.data.news });
+        })
+        .catch(function (error) {
+          console.log(error);
+        })
+        .then(function () {});
     }
   }
 
   render() {
     return (
       <Container>
-       
         <br></br>
         Good Day {this.props.user}
         <Row>

@@ -19,27 +19,29 @@ export default class TasksPage extends Component {
 
   handleTask(data) {
     // change tasks:
-    this.setState((prevState) => ({
-      tasks: prevState.tasks.map((el, index) =>
+    this.setState(() => ({
+      tasks: this.state.tasks.map((el, index) =>
         index === data[3] ? { ...el, name: data[0] } : el
       ),
     }));
+    console.log("THE NEW STATE: ", this.state.tasks[data[3]]);
     this.setState({ updatedTask: this.state.tasks[data[3]] });
-    console.log("the", this.state.tasks[data[3]]);
+    // console.log("the", this.state.tasks[data[3]]);
   }
 
   componentDidUpdate(prevState) {
     if (prevState.tasks !== this.state.tasks) {
-      axios
-        .post("http://localhost:8000/update-task", {
-          updatedTask: this.state.tasks,
-        })
-        .then((response) => {
-          console.log(response);
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
+      console.log(this.state.tasks)
+      // axios
+      //   .post("http://localhost:8000/update-task", {
+      //     updatedTask: this.state.tasks,
+      //   })
+      //   .then((response) => {
+      //     console.log(response);
+      //   })
+      //   .catch(function (error) {
+      //     console.log(error);
+      //   });
     }
   }
 
@@ -49,7 +51,7 @@ export default class TasksPage extends Component {
     //   { name: "wash up", status: false, id: 13 },
     //   { name: "get up on time", status: true, id: 12 },
     // ];
-    console.log("OPTONS: ", options.tasks[0].name);
+    //console.log("OPTONS: ", options.tasks[0].name);
 
     if (options.tasks.length === 0) {
       return <>You have no tasks</>;

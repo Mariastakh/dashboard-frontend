@@ -11,6 +11,7 @@ export default class TasksPage extends Component {
         { name: "wash up", status: false, id: 13 },
         { name: "get up on time", status: true, id: 12 },
       ],
+      updatedTask: "",
     };
 
     this.handleTask = this.handleTask.bind(this);
@@ -23,12 +24,23 @@ export default class TasksPage extends Component {
         index === data[3] ? { ...el, name: data[0] } : el
       ),
     }));
+    this.setState({ updatedTask: this.state.tasks[data[3]] });
+    console.log("the", this.state.tasks[data[3]]);
   }
 
-  componentDidUpdate() {
-    // CHECK IF COMPONENT UPDATED AND CALL API
-    // to avoid an infinite loop, the API call needs to be inside a conditional statement.
-    console.log("END STATE: ", this.state.tasks);
+  componentDidUpdate(prevState) {
+    if (prevState.tasks !== this.state.tasks) {
+      axios
+        .post("http://localhost:8000/update-task", {
+          updatedTask: this.state.tasks,
+        })
+        .then((response) => {
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }
   }
 
   Tasks(options) {

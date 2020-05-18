@@ -25,12 +25,13 @@ export default class DashboardPage extends Component {
         link: "",
         content: "",
       },
+      tasks: "no tasks",
     };
   }
 
   async componentDidMount() {
     const jwt = localStorage.getItem("jwt");
-    console.log(jwt);
+
     if (!jwt) {
       this.props.history.push("/");
     } else {
@@ -78,6 +79,17 @@ export default class DashboardPage extends Component {
         .then(function () {
           // always executed
         });
+
+      axios
+        .get("http://localhost:8000/tasks")
+        .then((response) => {
+          this.setState({ tasks: response.data.tasks });
+          console.log("Dashboard has received tasks: ", response.data.tasks);
+          localStorage.setItem("tasks", response.data.tasks);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
     }
   }
 
@@ -85,7 +97,7 @@ export default class DashboardPage extends Component {
     return (
       <Container>
         <br></br>
-       <p className="title-margin"> Good day {this.props.user}</p>
+        <p className="title-margin"> Good day {this.props.user}</p>
         <Row className="content with-margin">
           <Col xs={12} md={4}>
             <WeatherPreview
@@ -110,7 +122,7 @@ export default class DashboardPage extends Component {
             <PhotoPreview />
           </Col>
           <Col xs={12} md={4}>
-            <TasksPreview />
+            <TasksPreview tasks={this.state.tasks} />
           </Col>
           <Col xs={12} md={4}>
             <ClothesPreview />

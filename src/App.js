@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import axios from "axios";
 import "./App.css";
 import "./global.css";
 import LoginPage from "./Pages/LoginPage";
@@ -16,8 +15,9 @@ export default class App extends Component {
     super(props);
 
     this.state = {
-      team: localStorage.getItem('teamdata') || "Choose a team",
+      team: localStorage.getItem("teamdata") || "Choose a team",
       user: localStorage.getItem("user") || "No user",
+      tasks: localStorage.getItem("tasks") || "no tasks",
     };
 
     this.handleLogin = this.handleLogin.bind(this);
@@ -25,7 +25,6 @@ export default class App extends Component {
   }
 
   handleLogin(data) {
-  
     localStorage.setItem("user", data.user.username);
     console.log(this.state.user);
   }
@@ -33,7 +32,7 @@ export default class App extends Component {
   handleTeam(data) {
     console.log("team handled");
     console.log(data);
-    localStorage.setItem('teamdata', data);
+    localStorage.setItem("teamdata", data);
   }
 
   render() {
@@ -44,11 +43,7 @@ export default class App extends Component {
             exact
             path="/"
             render={(props) => (
-              <LoginPage
-                {...props}
-                handleLogin={this.handleLogin}
-               
-              />
+              <LoginPage {...props} handleLogin={this.handleLogin} />
             )}
           />
           <Route
@@ -65,6 +60,7 @@ export default class App extends Component {
                 loggedInStatus={this.state.loggedInStatus}
                 team={this.state.team}
                 user={this.state.user}
+                tasks={this.state.tasks}
               />
             )}
           />

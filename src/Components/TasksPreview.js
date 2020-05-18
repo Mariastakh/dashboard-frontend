@@ -9,11 +9,11 @@ export default class TasksPreview extends Component {
 
   render() {
     return (
-      <>
+      <a style={{ textDecoration: "none", color: "black" }} href="/tasks">
         <div className={styles.preview} data-testid="taskspreview">
         <p className={styles.title}>Tasks</p>
         </div>
-      </>
+      </a>
     );
   }
 }

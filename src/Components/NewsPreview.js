@@ -9,13 +9,16 @@ export default class NewsPreview extends Component {
 
   render() {
     return (
-      <div className={styles.preview}>
-        <div data-testid="newspreview">
-        <p className={styles.title}>News</p>
-          {this.props.title}<br></br>
-          {this.props.content}
+      <a style={{ textDecoration: "none", color: "black" }} href="/news">
+        <div className={styles.preview}>
+          <div data-testid="newspreview">
+            <p className={styles.title}>News</p>
+            {this.props.title}
+            <br></br>
+            {this.props.content}
+          </div>
         </div>
-      </div>
+      </a>
     );
   }
 }

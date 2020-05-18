@@ -9,11 +9,11 @@ export default class PhotoPreview extends Component {
 
   render() {
     return (
-      <div>
+      <a style={{ textDecoration: "none", color: "black" }} href="/photos">
         <div className={styles.preview} data-testid="photopreview">
         <p className={styles.title}>Photos</p>
         </div>
-      </div>
+      </a>
     );
   }
 }

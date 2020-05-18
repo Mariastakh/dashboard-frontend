@@ -13,9 +13,9 @@ export default class NewsPreview extends Component {
         <div className={styles.preview}>
           <div data-testid="newspreview">
             <p className={styles.title}>News</p>
-            {this.props.title}
+            <div className={styles.headline}>{this.props.title}</div>
             <br></br>
-            {this.props.content}
+            <div className={styles.textContent}>{this.props.content}</div>
           </div>
         </div>
       </a>

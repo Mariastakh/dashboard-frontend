@@ -13,7 +13,7 @@ export default class SportsPreview extends Component {
         <div className={styles.preview} data-testid="sportspreview">
           <p className={styles.title}>Sport</p>
           <br></br>
-          {this.props.team}
+          <p className={styles.headline}>{this.props.team}</p>
         </div>
       </a>
     );

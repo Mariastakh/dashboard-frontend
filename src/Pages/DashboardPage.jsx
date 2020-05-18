@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./dashboard.css";
 
 import { Container, Row, Col } from "react-bootstrap";
 import WeatherPreview from "../Components/WeatherPreview";
@@ -92,8 +93,8 @@ export default class DashboardPage extends Component {
     return (
       <Container>
         <br></br>
-        Good Day {this.props.user}
-        <Row>
+       <p className="title-margin"> Good day {this.props.user}</p>
+        <Row className="content with-margin">
           <Col xs={12} md={4}>
             <WeatherPreview
               location={this.state.weather.location}
@@ -112,7 +113,7 @@ export default class DashboardPage extends Component {
             <SportsPreview team={this.props.team} />
           </Col>
         </Row>
-        <Row>
+        <Row div class="row mt-3">
           <Col xs={12} md={4}>
             <PhotoPreview />
           </Col>

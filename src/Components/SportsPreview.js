@@ -9,15 +9,13 @@ export default class SportsPreview extends Component {
 
   render() {
     return (
-      <>
+      <a style={{ textDecoration: "none", color: "black" }} href="/sports">
         <div className={styles.preview} data-testid="sportspreview">
-          Sport<br></br>
-          {this.props.team}
-          <a href="/sports">
-            <img className={styles.img} src={container} alt="a sports update" />
-          </a>
+          <p className={styles.title}>Sport</p>
+          <br></br>
+          <p className={styles.headline}>{this.props.team}</p>
         </div>
-      </>
+      </a>
     );
   }
 }

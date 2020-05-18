@@ -33,17 +33,15 @@ export default class WeatherPreview extends Component {
     return (
       <>
         <div className={styles.preview} data-testid="weatherpreview">
-          {/* Cloudy */}
-          Weather
-          {this.props.location}
-          {this.props.temperature} degrees
-          {this.props.description}
-          <this.Icon description={this.props.description} />
-          <img
-            className={styles.img}
-            src={container}
-            alt="the current weather"
-          />
+          <p className={styles.title}>Weather</p>
+          <div className={styles.previewContent}>
+            
+            <this.Icon  description={this.props.description} />
+            {this.props.temperature} degrees
+            <br></br>
+            <p className={styles.location}>{this.props.location}</p>
+            <br></br>
+          </div>
         </div>
       </>
     );

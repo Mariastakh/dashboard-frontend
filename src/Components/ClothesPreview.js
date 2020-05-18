@@ -28,8 +28,7 @@ export default class ClothesPreview extends Component {
     return (
       <>
         <div className={styles.preview} data-testid="clothespreview">
-          Clothes
-          <img className={styles.img} src={container} alt="clothes pie chart" />
+        <p className={styles.title}>Clothes</p>
           <Pie data={{ datasets: this.state.dataset }} />
         </div>
       </>

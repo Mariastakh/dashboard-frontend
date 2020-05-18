@@ -1,8 +1,59 @@
 .preview {
+  width: 320px;
+  height: 234px;
+  border-top: 10px;
+  background-image: url("../assets/Container.png");
+  background-position: center;
+}
+
+.img {
+  width: 450px;
+  padding: 50px;
+}
+
+.previewContent {
+  padding-top: 5px;
+  text-align: center;
+}
+
+.weatherIcon {
+  border-right: 20px;
+}
+
+.title {
+  text-align: center;
+  font-size: 20px;
+}
+
+.location {
+  margin-top: 10px;
+  font-size: 25px;
+  text-align: center;
+}
+
+.headline {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.textContent{
+  text-align: center;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+/* .preview {
   padding: 10px;
 }
 
 .img {
   width: 450px;
   padding: 50px;
+} */
+
+.topLeft {
+  position: absolute;
+  top: 8px;
+  left: 16px;
 }

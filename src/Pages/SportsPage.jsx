@@ -20,12 +20,9 @@ export default class SporstPage extends Component {
         winningTeam: this.state.team,
       })
       .then((response) => {
-        // handle success
         this.setState({ losingTeams: response.data.losingTeams });
-        console.log(this.state.losingTeams);
       })
       .catch(function (error) {
-        // handle error
         console.log(error);
       })
       .then(function () {
@@ -34,8 +31,6 @@ export default class SporstPage extends Component {
   };
 
   Teams(options) {
-    // run the tests agains every element in the array
-    console.log("the teams: ", options.losingTeams.length);
     if (options.losingTeams.length === 0) {
       return <></>;
     } else {

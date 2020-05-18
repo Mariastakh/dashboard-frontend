@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import addPicture from "../assets/Add_picture.png";
 
 export default class SignInService extends Component {
   constructor(props) {
@@ -10,6 +11,7 @@ export default class SignInService extends Component {
       password: "",
       confirmedPassword: "",
       email: "",
+      image: "",
       registrationError: "",
     };
 
@@ -38,6 +40,48 @@ export default class SignInService extends Component {
     this.setState({ email: event.target.value });
   };
 
+  handleImageChange = (event) => {
+    console.log(event.target.files[0]);
+    this.setState({ image: event.target.files[0] });
+    console.log(this.state.image);
+
+    const file = event.target.files[0];
+    // Split the filename to get the name and type
+    let fileParts = file.name.split(".");
+    let fileName = fileParts[0];
+    let fileType = fileParts[1];
+    console.log("Preparing the upload");
+    axios
+      .post("http://localhost:8000/upload-image", {
+        fileName: fileName,
+        fileType: fileType,
+      })
+      .then((response) => {
+        const returnData = response.data.data.returnData;
+        const signedRequest = returnData.signedRequest;
+        const url = returnData.url;
+        console.log("Recieved a signed request " + signedRequest);
+
+        // Put the fileType in the headers for the upload
+        var options = {
+          headers: {
+            "Content-Type": fileType,
+          },
+        };
+        axios
+          .put(signedRequest, file, options)
+          .then((result) => {
+            console.log("Response from s3", result);
+          })
+          .catch((error) => {
+            alert("ERROR " + JSON.stringify(error));
+          });
+      })
+      .catch((error) => {
+        alert(JSON.stringify(error));
+      });
+  };
+
   //"https://em7jsvk2ig.execute-api.eu-west-2.amazonaws.com/production/signup"
 
   handleSubmit = (event) => {
@@ -48,7 +92,7 @@ export default class SignInService extends Component {
     } else {
       axios
         .post(
-          "https://em7jsvk2ig.execute-api.eu-west-2.amazonaws.com/production/signup",
+          "http://localhost:8000/signup",
           {
             username: this.state.username,
             password: this.state.password,
@@ -71,7 +115,7 @@ export default class SignInService extends Component {
   };
 
   render() {
-    const { username, password, confirmedPassword, email } = this.state;
+    const { username, password, confirmedPassword, email, image } = this.state;
     return (
       <>
         <form onSubmit={this.handleSubmit}>
@@ -119,6 +163,20 @@ export default class SignInService extends Component {
               type="email"
               value={email}
               onChange={this.handleEmailChange}
+              required
+            />
+          </div>
+
+          <div data-testid="image">
+            <label for="file-input">
+              <img src={addPicture} alt="image holder" />;
+            </label>
+            <input
+              data-testid="imageinput"
+              id="file-input"
+              name="image"
+              type="file"
+              onChange={this.handleImageChange}
               required
             />
           </div>

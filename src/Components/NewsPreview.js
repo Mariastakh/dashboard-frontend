@@ -14,13 +14,13 @@ export default class NewsPreview extends Component {
           News<br></br>
           {this.props.title}<br></br>
           {this.props.content}
-          <a href="/news">
+          {/* <a href="/news">
             <img
               className={styles.img}
               src={container}
               alt="the latest news headline"
             />
-          </a>
+          </a> */}
         </div>
       </div>
     );

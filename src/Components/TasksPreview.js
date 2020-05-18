@@ -12,9 +12,9 @@ export default class TasksPreview extends Component {
       <>
         <div className={styles.preview} data-testid="taskspreview">
           {/* Tasks */}
-          <a href="/tasks">
+          {/* <a href="/tasks">
             <img className={styles.img} src={container} alt="tasks preview" />
-          </a>
+          </a> */}
         </div>
       </>
     );

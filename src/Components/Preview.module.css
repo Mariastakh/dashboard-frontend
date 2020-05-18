@@ -1,8 +1,28 @@
 .preview {
+  width: 320px;
+  height:  234px;
+  border-top:10px;
+  background-image: url("../assets/Container.png");
+  background-position:center;
+}
+
+.img {
+  width: 450px;
+  padding: 50px;
+}
+
+
+/* .preview {
   padding: 10px;
 }
 
 .img {
   width: 450px;
   padding: 50px;
+} */
+
+.topLeft {
+  position: absolute;
+  top: 8px;
+  left: 16px;
 }

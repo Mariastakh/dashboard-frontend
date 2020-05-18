@@ -29,7 +29,7 @@ export default class ClothesPreview extends Component {
       <>
         <div className={styles.preview} data-testid="clothespreview">
           Clothes
-          <img className={styles.img} src={container} alt="clothes pie chart" />
+          {/* <img className={styles.img} src={container} alt="clothes pie chart" /> */}
           <Pie data={{ datasets: this.state.dataset }} />
         </div>
       </>

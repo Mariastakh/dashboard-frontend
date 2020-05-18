@@ -11,12 +11,7 @@ export default class PhotoPreview extends Component {
       <a style={{ textDecoration: "none", color: "black" }} href="/photos">
         <div className={styles.preview} data-testid="photopreview">
           <p className={styles.title}>Photos</p>
-          <div classname={styles.previewContent}>
-            <img
-              style={{ width: 100 }}
-              src="https://dashboard-images-bucket.s3.eu-west-2.amazonaws.com/t1"
-            />
-          </div>
+          <div classname={styles.previewContent}></div>
         </div>
       </a>
     );

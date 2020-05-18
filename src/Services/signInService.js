@@ -44,42 +44,6 @@ export default class SignInService extends Component {
     console.log(event.target.files[0]);
     this.setState({ image: event.target.files[0] });
     console.log(this.state.image);
-
-    const file = event.target.files[0];
-    // Split the filename to get the name and type
-    let fileParts = file.name.split(".");
-    let fileName = fileParts[0];
-    let fileType = fileParts[1];
-    console.log("Preparing the upload");
-    axios
-      .post("http://localhost:8000/upload-image", {
-        fileName: fileName,
-        fileType: fileType,
-      })
-      .then((response) => {
-        const returnData = response.data.data.returnData;
-        const signedRequest = returnData.signedRequest;
-        const url = returnData.url;
-        console.log("Recieved a signed request " + signedRequest);
-
-        // Put the fileType in the headers for the upload
-        var options = {
-          headers: {
-            "Content-Type": fileType,
-          },
-        };
-        axios
-          .put(signedRequest, file, options)
-          .then((result) => {
-            console.log("Response from s3", result);
-          })
-          .catch((error) => {
-            alert("ERROR " + JSON.stringify(error));
-          });
-      })
-      .catch((error) => {
-        alert(JSON.stringify(error));
-      });
   };
 
   //"https://em7jsvk2ig.execute-api.eu-west-2.amazonaws.com/production/signup"
@@ -90,6 +54,13 @@ export default class SignInService extends Component {
     if (this.state.confirmedPassword !== this.state.password) {
       alert("Passwords don't match");
     } else {
+      const file = this.state.image;
+      // Split the filename to get the name and type
+      let fileParts = file.name.split(".");
+      let fileName = fileParts[0];
+      let fileType = fileParts[1];
+      console.log("Preparing the upload");
+
       axios
         .post(
           "http://localhost:8000/signup",
@@ -97,12 +68,36 @@ export default class SignInService extends Component {
             username: this.state.username,
             password: this.state.password,
             email: this.state.email,
+            fileName: fileName,
+            fileType: fileType,
           },
           { withCredentials: true }
         )
         .then((response) => {
           console.log(response);
-          if (response.data === "Created") {
+          if (response.status === 200) {
+            // image
+            const returnData = response.data.data.returnData;
+            const signedRequest = returnData.signedRequest;
+            const url = returnData.url;
+            console.log("RETURN DAATA",returnData);
+            console.log("Recieved a signed request " + signedRequest);
+
+            // Put the fileType in the headers for the upload
+            var options = {
+              headers: {
+                "Content-Type": fileType,
+              },
+            };
+            axios
+              .put(signedRequest, file, options)
+              .then((result) => {
+                console.log("Response from s3", result);
+              })
+              .catch((error) => {
+                alert("ERROR " + JSON.stringify(error));
+              });
+
             this.props.handleSuccessfulAuth(response);
           } else {
             this.setState({ registrationError: "Oops, sign-up didn't work" });

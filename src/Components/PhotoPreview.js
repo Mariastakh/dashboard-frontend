@@ -11,14 +11,7 @@ export default class PhotoPreview extends Component {
     return (
       <div>
         <div className={styles.preview} data-testid="photopreview">
-          Photos
-          {/* <a href="/photos">
-            <img
-              className={styles.img}
-              src={container}
-              alt="your photo collection"
-            />
-          </a> */}
+        <p className={styles.title}>Photos</p>
         </div>
       </div>
     );

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { getTeams } from "../api/footballApi";
-import axios from "axios";
 
 export default class SporstPage extends Component {
   constructor(props) {

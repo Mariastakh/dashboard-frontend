@@ -21,16 +21,11 @@ export default class App extends Component {
     };
 
     this.handleLogin = this.handleLogin.bind(this);
-    this.handleTeam = this.handleTeam.bind(this);
   }
 
   handleLogin(data) {
     localStorage.setItem("user", data.user.username);
     console.log(this.state.user);
-  }
-
-  handleTeam(data) {
-    localStorage.setItem("teamdata", data);
   }
 
   render() {
@@ -65,9 +60,7 @@ export default class App extends Component {
           <Route
             path="/sports"
             exact
-            render={(props) => (
-              <SportsPage {...props} handleTeam={this.handleTeam} />
-            )}
+            render={(props) => <SportsPage {...props} />}
           />
           <Route path="/news" exact component={NewsPage} />
           <Route path="/photos" exact component={PhotoPage} />

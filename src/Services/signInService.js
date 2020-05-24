@@ -63,7 +63,7 @@ export default class SignInService extends Component {
 
       axios
         .post(
-          "http://localhost:8000/signup",
+          "https://em7jsvk2ig.execute-api.eu-west-2.amazonaws.com/production/signup",
           {
             username: this.state.username,
             password: this.state.password,

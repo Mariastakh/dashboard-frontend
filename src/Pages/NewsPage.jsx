@@ -22,7 +22,7 @@ export default class NewsPage extends Component {
     }
 
     axios
-      .get("http://localhost:8000/news")
+      .get("https://em7jsvk2ig.execute-api.eu-west-2.amazonaws.com/production/news")
       .then((response) => {
         // handle success
 

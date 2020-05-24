@@ -65,7 +65,7 @@ export default class TasksPage extends Component {
 
   componentDidMount() {
     axios
-      .get("http://localhost:8000/tasks")
+      .get("https://em7jsvk2ig.execute-api.eu-west-2.amazonaws.com/production/tasks")
       .then((response) => {
         // this.setState({ tasks: response.data.tasks });
       })

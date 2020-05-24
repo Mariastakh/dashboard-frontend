@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { getTeams } from "../api/footballApi";
 import axios from "axios";
 
 export default class SporstPage extends Component {
@@ -15,19 +16,9 @@ export default class SporstPage extends Component {
     event.preventDefault();
     this.props.handleTeam(this.state.team);
 
-    axios
-      .post("http://localhost:8000/sport", {
-        winningTeam: this.state.team,
-      })
-      .then((response) => {
-        this.setState({ losingTeams: response.data.losingTeams });
-      })
-      .catch(function (error) {
-        console.log(error);
-      })
-      .then(function () {
-        // always executed
-      });
+    getTeams(this.state.team).then((response) => {
+      this.setState({ losingTeams: response.teams });
+    });
   };
 
   Teams(options) {

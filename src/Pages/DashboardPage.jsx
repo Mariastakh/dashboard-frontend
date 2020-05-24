@@ -44,12 +44,16 @@ export default class DashboardPage extends Component {
       const locationCoordinates = await getPosition();
 
       axios
-        .post("http://localhost:8000/weather", {
-          location: {
-            lat: locationCoordinates.coords.latitude,
-            lon: locationCoordinates.coords.longitude,
+        .post(
+          "https://em7jsvk2ig.execute-api.eu-west-2.amazonaws.com/production/weather",
+          {
+            location: {
+              lat: locationCoordinates.coords.latitude,
+              lon: locationCoordinates.coords.longitude,
+            },
           },
-        })
+          { headers: { Authorization: `Bearer ${jwt}` } }
+        )
         .then((response) => {
           // handle success
 
@@ -65,7 +69,10 @@ export default class DashboardPage extends Component {
         });
 
       axios
-        .get("http://localhost:8000/news")
+        .get(
+          "https://em7jsvk2ig.execute-api.eu-west-2.amazonaws.com/production/news",
+          { headers: { Authorization: `Bearer ${jwt}` } }
+        )
         .then((response) => {
           this.setState({ news: response.data.news });
         })
@@ -75,9 +82,12 @@ export default class DashboardPage extends Component {
         .then(function () {});
 
       axios
-        .get("http://localhost:8000/photos", {
-          headers: { Authorization: `Bearer ${jwt}` },
-        })
+        .get(
+          "https://em7jsvk2ig.execute-api.eu-west-2.amazonaws.com/production/photos",
+          {
+            headers: { Authorization: `Bearer ${jwt}` },
+          }
+        )
         .then((response) => {
           console.log(response);
           //this.setState({ news: response.data.news });
@@ -93,7 +103,7 @@ export default class DashboardPage extends Component {
     return (
       <Container>
         <br></br>
-       <p className="title-margin"> Good day {this.props.user}</p>
+        <p className="title-margin"> Good day {this.props.user}</p>
         <Row className="content with-margin">
           <Col xs={12} md={4}>
             <WeatherPreview

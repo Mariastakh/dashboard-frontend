@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import TextInput from "../Components/common/TextInput";
 import { getTeams } from "../api/footballApi";
 
@@ -42,12 +42,11 @@ function SporstPage() {
 
   return (
     <>
-      sports page
       <form onSubmit={handleSubmit}>
         <TextInput
           data-testid="team"
           id="team"
-          label="team"
+          label="Team"
           name="team"
           onChange={handleChange}
           value={team}

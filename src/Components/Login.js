@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import axios from "axios";
+import { getUser } from "../api/getUser";
 
 export default class Login extends Component {
   constructor(props) {
@@ -25,27 +25,11 @@ export default class Login extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    axios
-      .post(
-        "https://em7jsvk2ig.execute-api.eu-west-2.amazonaws.com/production/",
-        {
-          username: this.state.username,
-          password: this.state.password,
-        },
-        { withCredentials: true }
-      )
-      .then((response) => {
-        if (response.status === 200) {
-          console.log(response);
-          localStorage.setItem("jwt", response.data.token);
-          this.props.handleSuccessfulAuth(response.data);
-        } else {
-          this.setState({ registrationError: "Oops, log-in unsuccessful" });
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    getUser(this.state.username, this.state.password).then((response) => {
+      console.log("response is: ", response);
+      localStorage.setItem("jwt", response.data.token);
+      this.props.handleSuccessfulAuth(response.data);
+    });
   };
 
   render() {

@@ -19,26 +19,13 @@ export default class App extends Component {
       team: localStorage.getItem("teamdata") || "Choose a team",
       user: localStorage.getItem("user") || "No user",
     };
-
-    this.handleLogin = this.handleLogin.bind(this);
-  }
-
-  handleLogin(data) {
-    localStorage.setItem("user", data.user.username);
-    console.log(this.state.user);
   }
 
   render() {
     return (
       <main>
         <Router>
-          <Route
-            exact
-            path="/"
-            render={(props) => (
-              <LoginPage {...props} handleLogin={this.handleLogin} />
-            )}
-          />
+          <Route exact path="/" render={(props) => <LoginPage {...props} />} />
           <Route
             exact
             path="/signup"

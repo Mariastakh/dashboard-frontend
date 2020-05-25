@@ -1,35 +1,25 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import Login from "../Components/Login";
 
-export default class LoginPage extends Component {
-  constructor(props) {
-    super(props);
+function LoginPage(props) {
+  const [user, setUser] = useState([]);
 
-    this.state = {
-      username: "",
-      password: "",
-    };
-
-    this.handleSuccessfulAuth = this.handleSuccessfulAuth.bind(this);
+  function handleSuccessfulAuth(data) {
+    localStorage.setItem("user", data.user.username);
+    props.history.push("/dashboard");
   }
 
-  handleSuccessfulAuth(data) {
-    this.props.handleLogin(data);
-    this.props.history.push("/dashboard");
-  }
+  return (
+    <>
+      <p>Hackathon</p>
 
-  render() {
-    const { username, password } = this.state;
-    return (
-      <>
-        <p>Hackathon</p>
-       
-        <Login handleSuccessfulAuth={this.handleSuccessfulAuth} />
+      <Login handleSuccessfulAuth={handleSuccessfulAuth} />
 
-        <p>
-          New to Hackathon? <a href="/signup">Sign up</a>{" "}
-        </p>
-      </>
-    );
-  }
+      <p>
+        New? <a href="/signup">Sign up</a>{" "}
+      </p>
+    </>
+  );
 }
+
+export default LoginPage;

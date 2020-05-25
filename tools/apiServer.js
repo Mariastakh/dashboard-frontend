@@ -39,19 +39,17 @@ server.use(function (req, res, next) {
 server.use((req, res, next) => {
   if (req.method === "POST") {
     req.body.createdAt = Date.now();
+    //req.body.token = "12345";
   }
   // Continue to JSON Server router
   next();
 });
 
-server.post("/teams/", function (req, res, next) {
-  const error = validateCourse(req.params.winningTeam);
-  if (error) {
-    res.status(400).send(error);
-  } else {
-    req.body.slug = createSlug(req.body.title); // Generate a slug for new courses.
-    next();
-  }
+server.post("/login/", function (req, res, next) {
+  res.status(201).send({
+    token: "0000",
+    user: { username: "james", password: "hashedPass" },
+  });
 });
 
 // Use default router

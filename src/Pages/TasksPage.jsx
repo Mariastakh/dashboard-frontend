@@ -7,7 +7,7 @@ function TasksPage() {
 
   function handleChange(Updatedtask) {
     return (event) => {
-      const name = event.target.value; // I don't know what event is anymore sadcry
+      const name = event.target.value;
 
       setTasks((tasks) =>
         tasks.map((task) =>

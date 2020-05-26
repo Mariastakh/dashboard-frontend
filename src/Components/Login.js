@@ -1,11 +1,7 @@
 import React, { Component } from "react";
 import { getUser } from "../api/getUser";
 
-export default class Login extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = { username: "", password: "" };
+function Login() {
 
     this.handleUsernameChange = this.handleUsernameChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
@@ -32,8 +28,8 @@ export default class Login extends Component {
     });
   };
 
-  render() {
-    const { username, password } = this.state;
+
+  
     return (
       <>
         <form onSubmit={this.handleSubmit}>
@@ -68,5 +64,7 @@ export default class Login extends Component {
         </form>
       </>
     );
-  }
 }
+
+
+export default Login;

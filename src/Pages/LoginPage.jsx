@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Login from "../Components/Login";
+import LoginForm from "../Components/LoginForm";
 import { getUser } from "../api/getUser";
 
 function LoginPage(props) {
@@ -19,7 +19,6 @@ function LoginPage(props) {
     event.preventDefault();
     getUser(user.username, user.password).then((response) => {
       setUser(user);
-      console.log("response is: ", response);
       localStorage.setItem("jwt", response.data.token);
       localStorage.setItem("user", user.username);
       props.history.push("/dashboard");
@@ -28,10 +27,8 @@ function LoginPage(props) {
 
   return (
     <>
-      <p>Hackathon</p>
-
-      <Login user={user} onChange={handleChange} onSubmit={handleSubmit} />
-
+      <p>Welcome</p>
+      <LoginForm user={user} onChange={handleChange} onSubmit={handleSubmit} />
       <p>
         New? <a href="/signup">Sign up</a>{" "}
       </p>

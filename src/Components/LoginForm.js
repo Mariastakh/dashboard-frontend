@@ -1,6 +1,6 @@
 import React from "react";
 
-function Login(props) {
+function LoginForm(props) {
   return (
     <>
       <form onSubmit={props.onSubmit}>
@@ -37,4 +37,4 @@ function Login(props) {
   );
 }
 
-export default Login;
+export default LoginForm;

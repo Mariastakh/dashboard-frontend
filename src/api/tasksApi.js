@@ -10,7 +10,7 @@ export function saveTask(task) {
   return axios
     .put(
       baseUrl + (task.id || ""),
-      { task: task },
+      { name: task.name, status: task.status },
       { headers: { "content-type": "application/json" } }
     )
     .then(handleResponse)

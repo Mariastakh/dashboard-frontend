@@ -7,17 +7,19 @@
   },
   "tasks": [
     {
-      "task": {
-        "name": "wash up yo",
-        "status": false,
-        "id": 13
-      },
+      "name": "wash up yo",
+      "status": false,
       "id": 13
     },
     {
-      "name": "get up on time",
-      "status": true,
+      "name": "find the keys",
+      "status": false,
       "id": 12
+    },
+    {
+      "name": "find out who I am",
+      "status": false,
+      "id": 14
     }
   ],
   "login": {

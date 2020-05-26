@@ -38,7 +38,7 @@ server.use(function (req, res, next) {
 // Add createdAt to all POSTS
 server.use((req, res, next) => {
   if (req.method === "POST") {
-    req.body.createdAt = Date.now();
+    // req.body.createdAt = Date.now();
     //req.body.token = "12345";
   }
   // Continue to JSON Server router
@@ -52,9 +52,9 @@ server.post("/login/", function (req, res, next) {
   });
 });
 
-server.put("/tasks/", function (req, res, next) {
-  res.sendStatus(200);
-});
+// server.put("/tasks/", function (req, res, next) {
+//   res.sendStatus(200);
+// });
 
 // Use default router
 server.use(router);

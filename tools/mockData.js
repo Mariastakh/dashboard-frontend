@@ -1,11 +1,9 @@
 const teams = { teams: ["Inter", "Genoa"] };
 
-const tasks = {
-  tasks: [
-    { name: "wash up", status: false, id: 13 },
-    { name: "get up on time", status: true, id: 12 },
-  ],
-};
+const tasks = [
+  { name: "wash up", status: false, id: 13 },
+  { name: "get up on time", status: true, id: 12 },
+];
 
 const login = {
   user: { username: "james", password: "fruitbat" },

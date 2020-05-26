@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { getTasks } from "../api/tasksApi";
+import { toast } from "react-toastify";
+import { getTasks, saveTask } from "../api/tasksApi";
 import Task from "../Components/Task";
 
 const Tasks = (props) => {
@@ -21,24 +22,32 @@ const Tasks = (props) => {
 function TasksPage() {
   const [tasks, setTasks] = useState([]);
 
-  function handleChange(Updatedtask) {
+  function handleChange(updatedTask) {
     return (event) => {
       const name = event.target.value;
 
       setTasks((tasks) =>
         tasks.map((task) =>
-          task.id === Updatedtask.id ? { ...Updatedtask, name } : task
+          task.id === updatedTask.id ? { ...updatedTask, name } : task
         )
       );
     };
   }
 
-  function handleSubmit(event) {
-    event.preventDefault();
+  function handleSubmit(updatedTask) {
+    return (event) => {
+      event.preventDefault();
+      console.log("this is the new task: ", updatedTask);
+      saveTask(updatedTask).then(() => {
+        toast.success("Task saved.");
+      });
+    };
   }
 
   useEffect(() => {
-    getTasks().then((response) => setTasks(response.tasks));
+    getTasks().then((response) => {
+      setTasks(response);
+    });
   }, []);
 
   return (

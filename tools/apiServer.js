@@ -52,6 +52,10 @@ server.post("/login/", function (req, res, next) {
   });
 });
 
+server.put("/tasks/", function (req, res, next) {
+  res.sendStatus(200);
+});
+
 // Use default router
 server.use(router);
 

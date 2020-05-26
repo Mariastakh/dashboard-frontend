@@ -1,1 +1,29 @@
-{"teams":{"teams":["Inter","Genoa"]},"tasks":{"tasks":[{"name":"wash up","status":false,"id":13},{"name":"get up on time","status":true,"id":12}]},"login":{"user":{"username":"james","password":"fruitbat"}}}
+{
+  "teams": {
+    "teams": [
+      "Inter",
+      "Genoa"
+    ]
+  },
+  "tasks": [
+    {
+      "task": {
+        "name": "wash up yo",
+        "status": false,
+        "id": 13
+      },
+      "id": 13
+    },
+    {
+      "name": "get up on time",
+      "status": true,
+      "id": 12
+    }
+  ],
+  "login": {
+    "user": {
+      "username": "james",
+      "password": "fruitbat"
+    }
+  }
+}

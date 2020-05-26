@@ -3,7 +3,7 @@ import React from "react";
 function Task(props) {
   return (
     <>
-      <form onSubmit={props.onSubmit}>
+      <form onSubmit={props.onSubmit(props.task)}>
         <input
           data-testid="taskinput"
           name="task"

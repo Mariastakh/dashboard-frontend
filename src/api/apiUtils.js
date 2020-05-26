@@ -1,5 +1,4 @@
 export async function handleResponse(response) {
-  console.log(response);
   if (response.statusText === "OK") return response.data;
   if (response.status === 400) {
     //console.log(response);

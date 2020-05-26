@@ -37,7 +37,6 @@ function TasksPage() {
   function handleSubmit(updatedTask) {
     return (event) => {
       event.preventDefault();
-      console.log("this is the new task: ", updatedTask);
       saveTask(updatedTask).then(() => {
         toast.success("Task saved.");
       });

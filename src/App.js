@@ -10,6 +10,8 @@ import TasksPage from "./Pages/TasksPage";
 import SportsPage from "./Pages/SportsPage";
 import NewsPage from "./Pages/NewsPage";
 import PhotoPage from "./Pages/PhotoPage";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default class App extends Component {
   constructor(props) {
@@ -24,6 +26,7 @@ export default class App extends Component {
   render() {
     return (
       <main>
+        <ToastContainer autoClose={3000} hideProgressBar />
         <Router>
           <Route exact path="/" render={(props) => <LoginPage {...props} />} />
           <Route

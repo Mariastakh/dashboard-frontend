@@ -13,6 +13,16 @@ function Task(props) {
           required
         />
       </form>
+
+      <label>
+        Status:
+        <input
+          name="status"
+          type="checkbox"
+          checked={props.task.status}
+          onChange={props.onChange(props.task)}
+        />
+      </label>
     </>
   );
 }

@@ -26,6 +26,32 @@ function TasksPage() {
     return (event) => {
       const name = event.target.value;
 
+      // we only get event name (status) and type (checkbox)
+
+      if (event.target.name === "status") {
+        const checked = event.target.checked;
+        console.log("checkbox!");
+
+        const theTask = tasks.filter((task) => task.id === updatedTask.id);
+        console.log(theTask[0]);
+        theTask[0].status = !theTask[0].status;
+        console.log(theTask);
+
+        // setTasks((tasks) =>
+        //   tasks.map((task) => {
+        //     if (task.id === updatedTask.id) {
+        //       return theTask[0];
+        //     } else {
+        //       return task;
+        //     }
+        //   })
+        // );
+
+        saveTask(theTask[0]).then(() => {
+          toast.success("Task status updated.");
+        });
+      }
+
       setTasks((tasks) =>
         tasks.map((task) =>
           task.id === updatedTask.id ? { ...updatedTask, name } : task

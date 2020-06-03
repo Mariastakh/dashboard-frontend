@@ -30,7 +30,7 @@ function LoginPage(props) {
       <p>Welcome</p>
       <LoginForm user={user} onChange={handleChange} onSubmit={handleSubmit} />
       <p>
-        New? <a href="/signup">Sign up</a>{" "}
+        New? <a href="/register">Sign up</a>{" "}
       </p>
     </>
   );

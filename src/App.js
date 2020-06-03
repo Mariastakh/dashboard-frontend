@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import axios from "axios";
 import "./App.css";
 import "./global.css";
 import LoginPage from "./Pages/LoginPage";
-import SignUpPage from "./Pages/SignUpPage";
+import RegistrationPage from "./Pages/RegistrationPage";
 import DashboardPage from "./Pages/DashboardPage";
 import TasksPage from "./Pages/TasksPage";
 import SportsPage from "./Pages/SportsPage";
@@ -31,8 +30,8 @@ export default class App extends Component {
           <Route exact path="/" render={(props) => <LoginPage {...props} />} />
           <Route
             exact
-            path="/signup"
-            render={(props) => <SignUpPage {...props} />}
+            path="/register"
+            render={(props) => <RegistrationPage {...props} />}
           />
           <Route
             path="/dashboard"

@@ -46,7 +46,7 @@ export default class SignInService extends Component {
     console.log(this.state.image);
   };
 
-  //"https://em7jsvk2ig.execute-api.eu-west-2.amazonaws.com/production/signup"
+  //"https://em7jsvk2ig.execute-api.eu-west-2.amazonaws.com/production/register"
 
   handleSubmit = (event) => {
     event.preventDefault();
@@ -63,7 +63,7 @@ export default class SignInService extends Component {
 
       axios
         .post(
-          "https://em7jsvk2ig.execute-api.eu-west-2.amazonaws.com/production/signup",
+          "https://em7jsvk2ig.execute-api.eu-west-2.amazonaws.com/production/register",
           {
             username: this.state.username,
             password: this.state.password,
@@ -80,7 +80,7 @@ export default class SignInService extends Component {
             const returnData = response.data.data.returnData;
             const signedRequest = returnData.signedRequest;
             const url = returnData.url;
-            console.log("RETURN DAATA",returnData);
+            console.log("RETURN DAATA", returnData);
             console.log("Recieved a signed request " + signedRequest);
 
             // Put the fileType in the headers for the upload

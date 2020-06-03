@@ -3,6 +3,7 @@ import LoginForm from "../Components/LoginForm";
 import { getUser } from "../api/getUser";
 
 function LoginPage(props) {
+  const [errors, setErrors] = useState({});
   const [user, setUser] = useState({
     username: "",
     password: "",
@@ -17,6 +18,8 @@ function LoginPage(props) {
 
   function handleSubmit(event) {
     event.preventDefault();
+
+    if (!formIsValid()) return;
     getUser(user.username, user.password).then((response) => {
       setUser(user);
       localStorage.setItem("jwt", response.data.token);
@@ -25,10 +28,24 @@ function LoginPage(props) {
     });
   }
 
+  function formIsValid() {
+    const _errors = {};
+    if (!user.username) _errors.username = "Username is required";
+    if (!user.password) _errors.password = "Password is required";
+
+    setErrors(_errors);
+    return Object.keys(_errors).length === 0;
+  }
+
   return (
     <>
       <p>Welcome</p>
-      <LoginForm user={user} onChange={handleChange} onSubmit={handleSubmit} />
+      <LoginForm
+        errors={errors}
+        user={user}
+        onChange={handleChange}
+        onSubmit={handleSubmit}
+      />
       <p>
         New? <a href="/register">Sign up</a>{" "}
       </p>

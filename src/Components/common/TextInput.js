@@ -12,7 +12,7 @@ function TextInput(props) {
       <div className="field">
         <input
           id={props.id}
-          type="text"
+          type={props.type}
           onChange={props.onChange}
           name={props.name}
           className="form-control"

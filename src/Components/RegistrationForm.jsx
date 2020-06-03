@@ -1,44 +1,43 @@
 import React from "react";
+import { PropTypes } from "prop-types";
+import TextInput from "./common/TextInput";
 
 function RegistrationForm(props) {
   return (
     <>
       <form onSubmit={props.onSubmit}>
-        <div data-testid="username">
-          <label>Username</label>
-          <input
-            data-testid="usernameinput"
-            name="username"
-            type="text"
-            value={props.user.username}
-            onChange={props.onChange}
-            required
-          />
-        </div>
+        <TextInput
+          data-testid="usernameinput"
+          id="username"
+          label="Username"
+          name="username"
+          type="text"
+          onChange={props.onChange}
+          value={props.user.username}
+          error={props.errors.username}
+        />
 
-        <div data-testid="password">
-          <label>Password</label>
-          <input
-            data-testid="passwordinput"
-            name="password"
-            type="password"
-            value={props.user.password}
-            onChange={props.onChange}
-            required
-          />
-        </div>
+        <TextInput
+          data-testid="passwordinput"
+          id="password"
+          label="Password"
+          name="password"
+          type="password"
+          onChange={props.onChange}
+          value={props.user.password}
+          error={props.errors.password}
+        />
 
-        <div data-testid="passwordConfimration">
-          <label>Confirm password</label>
-          <input
-            data-testid="passwordConfirmationInput"
-            name="passwordConfirmation"
-            type="password"
-            value={props.user.passwordConfirmation}
-            onChange={props.onChange}
-            required
-          />
-        </div>
+        <TextInput
+          data-testid="passwordConfirmationinput"
+          id="passwordConfirmation"
+          label="Confirm password"
+          name="passwordConfirmation"
+          type="password"
+          onChange={props.onChange}
+          value={props.user.passwordConfirmation}
+          error={props.errors.passwordConfirmation}
+        />
 
         <div data-testid="submit">
           <button type="submit" className="button">
@@ -49,5 +48,12 @@ function RegistrationForm(props) {
     </>
   );
 }
+
+RegistrationForm.propTypes = {
+  user: PropTypes.object.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
+  errors: PropTypes.object.isRequired,
+};
 
 export default RegistrationForm;

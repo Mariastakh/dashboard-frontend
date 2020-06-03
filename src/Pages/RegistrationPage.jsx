@@ -7,7 +7,7 @@ function RegistrationPage(props) {
   const [user, setUser] = useState({
     username: "",
     password: "",
-    passowrdConfirmation: "",
+    passwordConfirmation: "",
   });
 
   function handleChange({ target }) {
@@ -19,10 +19,9 @@ function RegistrationPage(props) {
 
   function handleSubmit(event) {
     event.preventDefault();
-
     if (!formIsValid()) return;
     createUser(user.username, user.password).then((response) => {
-      props.history.push("/login");
+      props.history.push("/");
     });
   }
 
@@ -30,8 +29,8 @@ function RegistrationPage(props) {
     const _errors = {};
     if (!user.username) _errors.username = "Username is required";
     if (!user.password) _errors.password = "Password is required";
-    if (!user.passowrdConfirmation)
-      _errors.passowrdConfirmation = "Please confirm your password";
+    if (!user.passwordConfirmation)
+      _errors.passwordConfirmation = "Please confirm your password";
 
     setErrors(_errors);
     return Object.keys(_errors).length === 0;

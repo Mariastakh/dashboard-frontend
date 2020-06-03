@@ -52,6 +52,12 @@ server.post("/login/", function (req, res, next) {
   });
 });
 
+server.post("/register/", function (req, res, next) {
+  res.status(201).send({
+    user: { username: "james", password: "hashedPass" },
+  });
+});
+
 // server.put("/tasks/", function (req, res, next) {
 //   res.sendStatus(200);
 // });

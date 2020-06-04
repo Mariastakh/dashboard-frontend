@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { Route } from "react-router-dom";
 import "./App.css";
 import "./global.css";
 import LoginPage from "./Pages/LoginPage";
@@ -26,7 +26,6 @@ export default class App extends Component {
     return (
       <main>
         <ToastContainer autoClose={3000} hideProgressBar />
-
         <Route exact path="/" render={(props) => <LoginPage {...props} />} />
         <Route
           exact

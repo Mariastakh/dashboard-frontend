@@ -26,34 +26,33 @@ export default class App extends Component {
     return (
       <main>
         <ToastContainer autoClose={3000} hideProgressBar />
-        <Router>
-          <Route exact path="/" render={(props) => <LoginPage {...props} />} />
-          <Route
-            exact
-            path="/register"
-            render={(props) => <RegistrationPage {...props} />}
-          />
-          <Route
-            path="/dashboard"
-            exact
-            render={(props) => (
-              <DashboardPage
-                {...props}
-                loggedInStatus={this.state.loggedInStatus}
-                team={this.state.team}
-                user={this.state.user}
-              />
-            )}
-          />
-          <Route path="/tasks" exact component={TasksPage} />
-          <Route
-            path="/sports"
-            exact
-            render={(props) => <SportsPage {...props} />}
-          />
-          <Route path="/news" exact component={NewsPage} />
-          <Route path="/photos" exact component={PhotoPage} />
-        </Router>
+
+        <Route exact path="/" render={(props) => <LoginPage {...props} />} />
+        <Route
+          exact
+          path="/register"
+          render={(props) => <RegistrationPage {...props} />}
+        />
+        <Route
+          path="/dashboard"
+          exact
+          render={(props) => (
+            <DashboardPage
+              {...props}
+              loggedInStatus={this.state.loggedInStatus}
+              team={this.state.team}
+              user={this.state.user}
+            />
+          )}
+        />
+        <Route path="/tasks" exact component={TasksPage} />
+        <Route
+          path="/sports"
+          exact
+          render={(props) => <SportsPage {...props} />}
+        />
+        <Route path="/news" exact component={NewsPage} />
+        <Route path="/photos" exact component={PhotoPage} />
       </main>
     );
   }

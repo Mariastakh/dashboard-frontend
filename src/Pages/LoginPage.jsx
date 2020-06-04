@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import LoginForm from "../Components/LoginForm";
 import { getUser } from "../api/getUser";
 
@@ -8,6 +8,12 @@ function LoginPage(props) {
     username: "",
     password: "",
   });
+
+  // useEffect(() => {
+  //   if (user) {
+  //     props.history.push("/dashboard");
+  //   }
+  // });
 
   function handleChange({ target }) {
     setUser({

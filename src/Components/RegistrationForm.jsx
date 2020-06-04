@@ -18,6 +18,17 @@ function RegistrationForm(props) {
         />
 
         <TextInput
+          data-testid="emailinput"
+          id="email"
+          label="Email"
+          name="email"
+          type="email"
+          onChange={props.onChange}
+          value={props.user.email}
+          error={props.errors.email}
+        />
+
+        <TextInput
           data-testid="passwordinput"
           id="password"
           label="Password"
